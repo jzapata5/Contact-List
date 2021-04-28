@@ -20,6 +20,7 @@
 		A61BD464261E3EF20018110F /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61BD463261E3EF20018110F /* ContactsViewController.swift */; };
 		A61BD469261E3F060018110F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61BD468261E3F060018110F /* MapViewController.swift */; };
 		A61BD46E261E3F120018110F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61BD46D261E3F120018110F /* SettingsViewController.swift */; };
+		A63BA5612627A39D00097824 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63BA5602627A39D00097824 /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A61BD463261E3EF20018110F /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		A61BD468261E3F060018110F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A61BD46D261E3F120018110F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A63BA5602627A39D00097824 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,6 @@
 		A61BD424261E3C8B0018110F = {
 			isa = PBXGroup;
 			children = (
-				A604C6222624E381004D0922 /* Constants.swift */,
 				A61BD42F261E3C8B0018110F /* Contact List */,
 				A61BD446261E3C910018110F /* Contact ListTests */,
 				A61BD451261E3C920018110F /* Contact ListUITests */,
@@ -110,17 +111,19 @@
 		A61BD42F261E3C8B0018110F /* Contact List */ = {
 			isa = PBXGroup;
 			children = (
+				A61BD43E261E3C910018110F /* Info.plist */,
+				A61BD432261E3C8B0018110F /* SceneDelegate.swift */,
 				A61BD430261E3C8B0018110F /* AppDelegate.swift */,
 				A604C6272624E969004D0922 /* MyContactListModel.xcdatamodeld */,
-				A61BD432261E3C8B0018110F /* SceneDelegate.swift */,
-				A61BD434261E3C8B0018110F /* ViewController.swift */,
-				A61BD436261E3C8B0018110F /* Main.storyboard */,
 				A61BD439261E3C910018110F /* Assets.xcassets */,
+				A61BD436261E3C8B0018110F /* Main.storyboard */,
 				A61BD43B261E3C910018110F /* LaunchScreen.storyboard */,
-				A61BD43E261E3C910018110F /* Info.plist */,
 				A61BD463261E3EF20018110F /* ContactsViewController.swift */,
+				A63BA5602627A39D00097824 /* DateViewController.swift */,
 				A61BD468261E3F060018110F /* MapViewController.swift */,
 				A61BD46D261E3F120018110F /* SettingsViewController.swift */,
+				A604C6222624E381004D0922 /* Constants.swift */,
+				A61BD434261E3C8B0018110F /* ViewController.swift */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				A604C6232624E381004D0922 /* Constants.swift in Sources */,
 				A61BD433261E3C8B0018110F /* SceneDelegate.swift in Sources */,
 				A604C6292624E969004D0922 /* MyContactListModel.xcdatamodeld in Sources */,
+				A63BA5612627A39D00097824 /* DateViewController.swift in Sources */,
 				A61BD46E261E3F120018110F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

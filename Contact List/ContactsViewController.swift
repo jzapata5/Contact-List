@@ -8,9 +8,11 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate {
-
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
     
+    
+
+    //MARK: declare variables
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -25,9 +27,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var currentContact: Contact?
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
     
     
     override func viewDidLoad() {
@@ -38,18 +38,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
         
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtHomePhone, txtCell, txtEmail]
         
-        let textfield in textFields {
-            textfield.addTarget(self,
-                                action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
-                                for: UIControlEvents.editingDidEnd)
+        for textfield in textFields {
+            textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
         }
-    }
-    
-    
-    @objc func saveContact() {
-        appDelegate.saveContext()
-        sgmtEditMode.selectedSegmentIndex = 0
-        changeEditMode(self)
+        
     }
     
     
@@ -70,13 +62,19 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    @objc func saveContact() {
+        appDelegate.saveContext()
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
+    }
     
     
-    //edit changes
+    //MARK: edit changes
     
     @IBAction func changeEditMode(_ sender: Any) {
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtCell,txtHomePhone, txtEmail]
@@ -101,7 +99,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //keyboard
+    //MARK: keyboard functions
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -146,20 +144,29 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
         self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
    
+    
+    //MARK: Date Changed Functions
+    func dateChanged(date: Date) {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.birthday = date
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        lblBirthdate.text = formatter.string(from: date)
+    }
+    
+    override func prepare (for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueContactDate") {
+            let dateController = segue.destination as! DateViewController
+            dateController.delegate = self
+    }
+    
    // @IBAction func changeEditMode(_ sender: Any) {
     //}
     
+        //add comment
 }
 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
+}
